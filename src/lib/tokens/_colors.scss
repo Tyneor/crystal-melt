@@ -1,0 +1,67 @@
+::backdrop {
+	--backdrop: hsl(0, 0%, 9%, 0.5);
+}
+
+/*  light theme */
+:root {
+	/*  layer */
+	--layer-0: transparent;
+	--layer-0-hover: hsl(0, 0%, 55%, 0.12);
+	--layer-0-active: hsl(0, 0%, 55%, 0.5);
+	--layer-0-selected: hsl(0, 0%, 88%);
+	--layer-0-selected-hover: hsl(0, 0%, 79%);
+
+	--layer-1: hsl(0, 0%, 96%);
+	--layer-1-hover: hsl(0, 0%, 91%);
+
+	--hightlight: #d0e2ff;
+
+	/*  colors */
+	--primary: #0f62fe;
+	--primary-hover: #0050e6;
+	--primary-active: #002d9c;
+	--secondary: hsl(0, 0%, 22%);
+	--secondary-hover: hsl(0, 0%, 28%);
+	--secondary-active: hsl(0, 0%, 44%);
+	--danger: #da1e28;
+	--danger-hover: #ba1b23;
+	--danger-active: #750e13;
+
+	// mostly text and icon
+	--on-color: white;
+	--on-layer-primary: hsl(0, 0%, 9%);
+	--on-layer-secondary: hsl(0, 0%, 32%);
+	--on-layer-placeholder: hsl(0, 0%, 66%);
+
+	/*  disabled */
+	--container-disabled: hsl(0, 0%, 78%);
+	--text-disabled: hsl(0, 0%, 55%);
+
+	/*  border */
+	--border-subtle: hsl(0, 0%, 88%);
+	--border-strong: hsl(0, 0%, 55%);
+	--shadow: 0 2px 6px hsla(0, 0%, 0%, 0.3);
+
+	/*  tags */
+	--tag-gray-back: hsl(0, 0%, 88%);
+	--tag-gray-hover: hsl(0, 0%, 78%);
+	--tag-gray-front: hsl(0, 0%, 32%);
+	--tag-primary-back: var(--hightlight);
+	--tag-primary-hover: #a6c8ff;
+	--tag-primary-front: var(--primary);
+	--tag-highcontrast-back: var(--secondary);
+	--tag-highcontrast-hover: hsl(0, 0%, 30%);
+	--tag-highcontrast-front: var(--on-color);
+	--tag-outline-back: var(--layer-0);
+	--tag-outline-hover: var(--layer-0-hover);
+	--tag-outline-front: var(--on-layer);
+}
+
+body,
+[popover],
+dialog,
+a,
+input,
+button {
+	color: var(--on-layer-primary);
+}
