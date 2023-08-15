@@ -1,0 +1,20 @@
+{
+	"recommendations": [
+		// mandatory
+		"dbaeumer.vscode-eslint",
+		"esbenp.prettier-vscode",
+		"svelte.svelte-vscode",
+
+		// cool
+		"vunguyentuan.vscode-css-variables",
+		"mhutchie.git-graph",
+		"inu1255.easy-snippet",
+		"pkief.material-icon-theme",
+
+		// anecdotical
+		"yoavbls.pretty-ts-errors",
+		"usernamehw.errorlens",
+		"orta.vscode-twoslash-queries",
+
+	]
+}
