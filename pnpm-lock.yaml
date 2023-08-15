@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 devDependencies:
+  '@fontsource-variable/public-sans':
+    specifier: ^5.0.9
+    version: 5.0.9
   '@melt-ui/pp':
     specifier: ^0.1.2
     version: 0.1.2(@melt-ui/svelte@0.34.6)(svelte@4.2.0)
@@ -20,6 +23,9 @@ devDependencies:
   '@storybook/addon-links':
     specifier: ^7.3.0
     version: 7.3.0(react-dom@18.2.0)(react@18.2.0)
+  '@storybook/addon-svelte-csf':
+    specifier: ^3.0.7
+    version: 3.0.7(@storybook/svelte@7.3.0)(@storybook/theming@7.3.0)(@sveltejs/vite-plugin-svelte@2.4.5)(svelte@4.2.0)(vite@4.4.9)
   '@storybook/blocks':
     specifier: ^7.3.0
     version: 7.3.0(react-dom@18.2.0)(react@18.2.0)
@@ -47,6 +53,9 @@ devDependencies:
   '@typescript-eslint/parser':
     specifier: ^6.4.0
     version: 6.4.0(eslint@8.47.0)(typescript@5.1.6)
+  carbon-icons-svelte:
+    specifier: ^12.1.0
+    version: 12.1.0
   eslint:
     specifier: ^8.47.0
     version: 8.47.0
@@ -1707,6 +1716,10 @@ packages:
     resolution: {integrity: sha512-m0G6wlnhm/AX0H12IOWtK8gASEMffnX08RtKkCgTdHb9JpHKGloI7icFfLg9ZmQeavcvR0PKmzxClyuFPSjKWw==}
     dev: true
 
+  /@fontsource-variable/public-sans@5.0.9:
+    resolution: {integrity: sha512-N4ei3HOoltmw6SVoE5AztcdURLgla1K1oMGjmHJUUao//gjxvG+WB73wSlDvRaiUWRbBgUQm7fDXB+4F3qqpww==}
+    dev: true
+
   /@humanwhocodes/config-array@0.11.10:
     resolution: {integrity: sha512-KVVjQmNUepDVGXNuoRRdmmEjruj0KfiGSbS8LVc12LMsWDQzRXJ0qdhN8L8uUigKpfEHRhlaQFY0ib1tnUbNeQ==}
     engines: {node: '>=10.10.0'}
@@ -2722,6 +2735,36 @@ packages:
     transitivePeerDependencies:
       - '@types/react'
       - '@types/react-dom'
+    dev: true
+
+  /@storybook/addon-svelte-csf@3.0.7(@storybook/svelte@7.3.0)(@storybook/theming@7.3.0)(@sveltejs/vite-plugin-svelte@2.4.5)(svelte@4.2.0)(vite@4.4.9):
+    resolution: {integrity: sha512-T7KYWlhIs3G2N4r0UPawCCnHnYUWyg2rUMIfi/HLVYODsnqG7rJmK3ZAvtEgd1sFST0gRNBu13NIyH3YYUnA7A==}
+    peerDependencies:
+      '@storybook/svelte': ^7.0.0
+      '@storybook/theming': ^7.0.0
+      '@sveltejs/vite-plugin-svelte': ^1.0.0 || ^2.0.0
+      svelte: ^3.50.0 || ^4.0.0
+      svelte-loader: ^3.1.2
+      vite: ^3.0.0 || ^4.0.0
+    peerDependenciesMeta:
+      '@sveltejs/vite-plugin-svelte':
+        optional: true
+      svelte-loader:
+        optional: true
+      vite:
+        optional: true
+    dependencies:
+      '@babel/runtime': 7.22.10
+      '@storybook/svelte': 7.3.0(svelte@4.2.0)
+      '@storybook/theming': 7.3.0(react-dom@18.2.0)(react@18.2.0)
+      '@sveltejs/vite-plugin-svelte': 2.4.5(svelte@4.2.0)(vite@4.4.9)
+      dedent: 1.5.1
+      fs-extra: 11.1.1
+      magic-string: 0.30.2
+      svelte: 4.2.0
+      vite: 4.4.9(sass@1.65.1)
+    transitivePeerDependencies:
+      - babel-plugin-macros
     dev: true
 
   /@storybook/addon-toolbars@7.3.0(react-dom@18.2.0)(react@18.2.0):
@@ -4348,6 +4391,10 @@ packages:
     resolution: {integrity: sha512-tahF5O9EiiTzwTUqAeFjIZbn4Dnqxzz7ktrgGlMYNLH43Ul26IgTMH/zvL3DG0lZxBYnlT04axvInszUsZULdA==}
     dev: true
 
+  /carbon-icons-svelte@12.1.0:
+    resolution: {integrity: sha512-RPU+W/AhkdPRqHMaShOdFluQZXMT6PNYrqEwPxDBvmrX2ioOYhZo1J508e0WeVX69iOqyUv6KjxrdbsoDdogeg==}
+    dev: true
+
   /chalk@2.4.2:
     resolution: {integrity: sha512-Mti+f9lpJNcwF4tWV8/OrTTtF1gZi+f8FqlyAdouralcFWFQWF2+NgCHShjkCb+IFBLq9buZwE1xckQU4peSuQ==}
     engines: {node: '>=4'}
@@ -4617,6 +4664,15 @@ packages:
 
   /dedent-js@1.0.1:
     resolution: {integrity: sha512-OUepMozQULMLUmhxS95Vudo0jb0UchLimi3+pQ2plj61Fcy8axbP9hbiD4Sz6DPqn6XG3kfmziVfQ1rSys5AJQ==}
+    dev: true
+
+  /dedent@1.5.1:
+    resolution: {integrity: sha512-+LxW+KLWxu3HW3M2w2ympwtqPrqYRzU8fqi6Fhd18fBALe15blJPI/I4+UHveMVG6lJqB4JNd4UG0S5cnVHwIg==}
+    peerDependencies:
+      babel-plugin-macros: ^3.1.0
+    peerDependenciesMeta:
+      babel-plugin-macros:
+        optional: true
     dev: true
 
   /deep-equal@2.2.2:

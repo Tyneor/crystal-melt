@@ -29,11 +29,13 @@
     "svelte": "^4.0.0"
   },
   "devDependencies": {
+    "@fontsource-variable/public-sans": "^5.0.9",
     "@melt-ui/pp": "^0.1.2",
     "@melt-ui/svelte": "^0.34.6",
     "@storybook/addon-essentials": "^7.3.0",
     "@storybook/addon-interactions": "^7.3.0",
     "@storybook/addon-links": "^7.3.0",
+    "@storybook/addon-svelte-csf": "^3.0.7",
     "@storybook/blocks": "^7.3.0",
     "@storybook/svelte": "^7.3.0",
     "@storybook/sveltekit": "^7.3.0",
@@ -43,6 +45,7 @@
     "@sveltejs/package": "^2.2.1",
     "@typescript-eslint/eslint-plugin": "^6.4.0",
     "@typescript-eslint/parser": "^6.4.0",
+    "carbon-icons-svelte": "^12.1.0",
     "eslint": "^8.47.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-storybook": "^0.6.13",
