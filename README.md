@@ -4,16 +4,14 @@ Everything you need to build a Svelte library, powered by [`create-svelte`](http
 
 Read more about creating a library [in the docs](https://kit.svelte.dev/docs/packaging).
 
-## Creating a project
+## Notes
 
-If you're seeing this, you've probably already done this step. Congrats!
+Inside `node_modules/@storybook/addon-svelte-csf/dist/index.d.ts`, generic typing for Meta :
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
+```ts
+export class Meta<T extends SvelteComponent> extends SvelteComponent<
+	BaseMeta<ComponentType<T>> & BaseAnnotations<ComponentProps<T>, DecoratorReturnType>
+> {}
 ```
 
 ## Developing

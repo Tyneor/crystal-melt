@@ -1,14 +1,17 @@
 <script lang="ts">
-	import Button from "$lib/basic/Button.svelte";
 	import { Meta, Story, Template } from "@storybook/addon-svelte-csf";
-	import type { ArgTypes } from "@storybook/svelte";
 	import Concept from "carbon-icons-svelte/lib/Concept.svelte";
 	import TrashCan from "carbon-icons-svelte/lib/TrashCan.svelte";
-	import type { ComponentProps } from "svelte";
+	import Button from "./Button.svelte";
 
 	const kindOptions = ["primary", "secondary", "tertiary", "ghost", "text"] as const;
 	const sizeOptions = ["s", "m", "l"] as const;
-	const argTypes: ArgTypes<ComponentProps<Button>> = {
+</script>
+
+<Meta
+	title="Basic/Button"
+	component={Button}
+	argTypes={{
 		label: { control: { type: "text" } },
 		href: { control: { disable: true } },
 		kind: { control: { type: "inline-radio" }, options: kindOptions },
@@ -20,10 +23,8 @@
 		withLink: { control: { type: "boolean" } },
 
 		click: { table: { disable: true }, action: "click" },
-	};
-</script>
-
-<Meta title="Basic/Button" component={Button} {argTypes} />
+	}}
+/>
 
 <Template let:args>
 	<Button
