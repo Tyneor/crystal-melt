@@ -1,72 +1,72 @@
 {
-  "name": "melting-carbon",
-  "version": "0.0.1",
-  "scripts": {
-    "dev": "vite dev",
-    "build": "vite build && npm run package",
-    "preview": "vite preview",
-    "package": "svelte-kit sync && svelte-package && publint",
-    "prepublishOnly": "npm run package",
-    "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-    "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-    "lint": "prettier --plugin-search-dir . --check . && eslint .",
-    "format": "prettier --plugin-search-dir . --write .",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
-  },
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "svelte": "./dist/index.js"
-    }
-  },
-  "files": [
-    "dist",
-    "!dist/**/*.test.*",
-    "!dist/**/*.spec.*"
-  ],
-  "peerDependencies": {
-    "svelte": "^4.0.0"
-  },
-  "devDependencies": {
-    "@fontsource-variable/public-sans": "^5.0.9",
-    "@melt-ui/pp": "^0.1.2",
-    "@melt-ui/svelte": "^0.34.6",
-    "@storybook/addon-essentials": "^7.3.0",
-    "@storybook/addon-interactions": "^7.3.0",
-    "@storybook/addon-links": "^7.3.0",
-    "@storybook/addon-svelte-csf": "^3.0.7",
-    "@storybook/blocks": "^7.3.0",
-    "@storybook/manager-api": "^7.3.0",
-    "@storybook/svelte": "^7.3.0",
-    "@storybook/sveltekit": "^7.3.0",
-    "@storybook/testing-library": "^0.2.0",
-    "@storybook/theming": "^7.3.0",
-    "@sveltejs/adapter-auto": "^2.1.0",
-    "@sveltejs/kit": "^1.22.6",
-    "@sveltejs/package": "^2.2.1",
-    "@typescript-eslint/eslint-plugin": "^6.4.0",
-    "@typescript-eslint/parser": "^6.4.0",
-    "carbon-icons-svelte": "^12.1.0",
-    "eslint": "^8.47.0",
-    "eslint-config-prettier": "^9.0.0",
-    "eslint-plugin-storybook": "^0.6.13",
-    "eslint-plugin-svelte": "^2.32.4",
-    "prettier": "^3.0.1",
-    "prettier-plugin-svelte": "^3.0.3",
-    "publint": "^0.2.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "sass": "^1.65.1",
-    "storybook": "^7.3.0",
-    "svelte": "^4.2.0",
-    "svelte-check": "^3.5.0",
-    "svelte-sequential-preprocessor": "^2.0.1",
-    "tslib": "^2.6.1",
-    "typescript": "^5.1.6",
-    "vite": "^4.4.9"
-  },
-  "svelte": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "type": "module"
+	"name": "melting-carbon",
+	"version": "0.0.1",
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build && npm run package",
+		"preview": "vite preview",
+		"package": "svelte-kit sync && svelte-package && publint",
+		"prepublishOnly": "npm run package",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"lint": "prettier --plugin-search-dir . --check . && eslint .",
+		"format": "prettier --plugin-search-dir . --write .",
+		"storybook": "storybook dev -p 6006 --no-open",
+		"build-storybook": "storybook build"
+	},
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"svelte": "./dist/index.js"
+		}
+	},
+	"files": [
+		"dist",
+		"!dist/**/*.test.*",
+		"!dist/**/*.spec.*"
+	],
+	"peerDependencies": {
+		"svelte": "^4.0.0"
+	},
+	"devDependencies": {
+		"@fontsource-variable/public-sans": "^5.0.9",
+		"@melt-ui/pp": "^0.1.2",
+		"@melt-ui/svelte": "^0.34.6",
+		"@storybook/addon-essentials": "^7.3.1",
+		"@storybook/addon-interactions": "^7.3.1",
+		"@storybook/addon-links": "^7.3.1",
+		"@storybook/addon-svelte-csf": "^3.0.7",
+		"@storybook/blocks": "^7.3.1",
+		"@storybook/manager-api": "^7.3.1",
+		"@storybook/svelte": "^7.3.1",
+		"@storybook/sveltekit": "^7.3.1",
+		"@storybook/testing-library": "^0.2.0",
+		"@storybook/theming": "^7.3.1",
+		"@sveltejs/adapter-auto": "^2.1.0",
+		"@sveltejs/kit": "^1.22.6",
+		"@sveltejs/package": "^2.2.1",
+		"@typescript-eslint/eslint-plugin": "^6.4.0",
+		"@typescript-eslint/parser": "^6.4.0",
+		"carbon-icons-svelte": "^12.1.0",
+		"eslint": "^8.47.0",
+		"eslint-config-prettier": "^9.0.0",
+		"eslint-plugin-storybook": "^0.6.13",
+		"eslint-plugin-svelte": "^2.32.4",
+		"prettier": "^3.0.2",
+		"prettier-plugin-svelte": "^3.0.3",
+		"publint": "^0.2.0",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0",
+		"sass": "^1.65.1",
+		"storybook": "^7.3.1",
+		"svelte": "^4.2.0",
+		"svelte-check": "^3.5.0",
+		"svelte-sequential-preprocessor": "^2.0.1",
+		"tslib": "^2.6.1",
+		"typescript": "^5.1.6",
+		"vite": "^4.4.9"
+	},
+	"svelte": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"type": "module"
 }
