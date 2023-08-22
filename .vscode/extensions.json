@@ -1,20 +1,25 @@
 {
 	"recommendations": [
-		// mandatory
+		// recommended
+		"svelte.svelte-vscode",
 		"dbaeumer.vscode-eslint",
 		"esbenp.prettier-vscode",
-		"svelte.svelte-vscode",
+		"unifiedjs.vscode-mdx",
 
-		// cool
-		"vunguyentuan.vscode-css-variables",
-		"mhutchie.git-graph",
-		"inu1255.easy-snippet",
+		// general
 		"pkief.material-icon-theme",
+		"vunguyentuan.vscode-css-variables",
+		"inu1255.easy-snippet",
 
-		// anecdotical
+		// error
 		"yoavbls.pretty-ts-errors",
 		"usernamehw.errorlens",
-		"orta.vscode-twoslash-queries",
 
+		// git
+		"mhutchie.git-graph",
+		"waderyan.gitblame",
+
+		// type
+		"orta.vscode-twoslash-queries"
 	]
 }
