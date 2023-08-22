@@ -1,6 +1,5 @@
 <script lang="ts">
 	import Checkmark from "carbon-icons-svelte/lib/Checkmark.svelte";
-	import { createEventDispatcher } from "svelte";
 
 	export let name: string | undefined = undefined;
 	export let disabled = false;
