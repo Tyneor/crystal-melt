@@ -36,7 +36,7 @@
 	></Button>
 </Template>
 
-<Story name="Control" args={{ label: "My button" }} />
+<Story id="button" name="Button" args={{ label: "My button" }} />
 
 <Story name="Stretch in flex">
 	<div class="card">

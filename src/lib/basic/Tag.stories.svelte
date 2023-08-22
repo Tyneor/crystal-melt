@@ -15,6 +15,6 @@
 	}}
 />
 
-<Story id="story" name="Tag" let:args>
+<Story id="tag" name="Tag" let:args>
 	<Tag {...args} on:click={args.click}>carbonaram</Tag>
 </Story>
