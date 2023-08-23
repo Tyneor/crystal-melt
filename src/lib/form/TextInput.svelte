@@ -9,8 +9,8 @@
 	import View from "carbon-icons-svelte/lib/View.svelte";
 	import ViewOff from "carbon-icons-svelte/lib/ViewOff.svelte";
 	import { createEventDispatcher } from "svelte";
-	import { resize } from "../actions/resize.js";
-	import Button from "../basic/Button.svelte";
+	import { resize } from "$lib/actions/resize.js";
+	import Button from "$lib/basic/Button.svelte";
 
 	export let name: string;
 	export let disabled = false;
