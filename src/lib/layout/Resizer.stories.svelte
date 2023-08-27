@@ -3,17 +3,20 @@
 	import Resizer from "./Resizer.svelte";
 </script>
 
-<Meta title="Layout/Resizer" component={Resizer} parameters={{ layout: "fullscreen" }} />
+<Meta
+	title="Layout/Resizer"
+	component={Resizer}
+	parameters={{ layout: "fullscreen" }}
+	argTypes={{ nbPanes: { control: { type: "number" } } }}
+	args={{ nbPanes: 5 }}
+/>
 
-<Story id="resizer" name="Resizer">
+<Story id="resizer" name="Resizer" let:args={{ nbPanes }}>
 	<main>
-		<section>1</section>
-		<Resizer />
-		<section>2</section>
-		<Resizer />
-		<section>3</section>
-		<Resizer />
-		<section>4</section>
+		{#each Array.from({ length: nbPanes }) as _, i}
+			{#if i > 0}<Resizer />{/if}
+			<section>{i}</section>
+		{/each}
 	</main>
 </Story>
 
