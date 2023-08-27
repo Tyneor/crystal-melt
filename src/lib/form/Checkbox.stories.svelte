@@ -12,7 +12,7 @@
 
 		change: { table: { disable: true }, action: "change" },
 	}}
-	args={{ name: "datepicker", label: "Accept Terms and Conditions" }}
+	args={{ name: "checkbox", label: "Accept Terms and Conditions" }}
 />
 
 <Story id="checkbox" name="Checkbox" let:args>
