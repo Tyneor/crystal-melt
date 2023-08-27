@@ -3,7 +3,7 @@
 // node_modules/.pnpm/svelte@4.0.5/node_modules/svelte/elements.d.ts
 
 type EventHandler<E extends Event = Event, T extends EventTarget = Element> = (
-	event: E & { currentTarget: EventTarget & T }
+	event: E & { currentTarget: EventTarget & T },
 ) => unknown;
 
 declare global {
