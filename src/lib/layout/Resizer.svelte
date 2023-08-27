@@ -1,13 +1,22 @@
 <script lang="ts">
-	const COMPONENT_CLASS = "resizer";
-	const DATA_INITIAL_WIDTH = "data-initial-width";
+	const THIS_COMPONENT_CLASS = "resizer";
 
 	const getWidth = (el: Element, property?: "min" | "max") =>
 		parseFloat(window.getComputedStyle(el)[property ? (`${property}Width` as const) : "width"]);
 
 	let initialClientX: number | null = null;
-	let previousElts: HTMLElement[] = [];
-	let nextElts: HTMLElement[] = [];
+	let previousMaxMovementX: number | null = null;
+	let nextMaxMovementX: number | null = null;
+
+	type ResizableElement = {
+		initialWidth: number;
+		minWidth: number;
+		maxWidth: number;
+		getWidth: () => number;
+		setWidth: (value: number, unit: "px" | "%") => void;
+	};
+	let previousElts: ResizableElement[] = [];
+	let nextElts: ResizableElement[] = [];
 
 	const startDrag = (event: MouseEvent & { currentTarget: HTMLHRElement }) => {
 		const thisElt = event.currentTarget;
@@ -17,22 +26,32 @@
 		let resizerVisited = false;
 		for (const child of parentElt.children) {
 			if (child === thisElt) resizerVisited = true;
-			if (child instanceof HTMLElement && !child.classList.contains(COMPONENT_CLASS)) {
-				resizerVisited ? nextElts.push(child) : previousElts.unshift(child);
-				const width = String(getWidth(child));
-				child.setAttribute(DATA_INITIAL_WIDTH, width);
+			if (child instanceof HTMLElement && !child.classList.contains(THIS_COMPONENT_CLASS)) {
+				const resizableElement: ResizableElement = {
+					initialWidth: getWidth(child),
+					minWidth: getWidth(child, "min"),
+					maxWidth: getWidth(child, "max"),
+					getWidth: () => getWidth(child),
+					setWidth: (value: number, unit: "px" | "%") => (child.style.width = value + unit),
+				};
+				resizerVisited ? nextElts.push(resizableElement) : previousElts.unshift(resizableElement);
+				child.style.width = resizableElement.initialWidth + "px";
 				child.style.flex = "unset";
-				child.style.width = width + "px";
 			}
 		}
+		previousMaxMovementX = nextElts.reduce((maxMvt, elt) => maxMvt + elt.initialWidth - elt.maxWidth, 0);
+		nextMaxMovementX = previousElts.reduce((maxMvt, elt) => maxMvt - elt.initialWidth + elt.maxWidth, 0);
 		thisElt.classList.add("active");
 		window.addEventListener("mousemove", moveHandler);
 
 		const cleanup = () => {
 			thisElt.classList.remove("active");
 			window.removeEventListener("mousemove", moveHandler);
-			previousElts.forEach((el) => el.removeAttribute(DATA_INITIAL_WIDTH));
-			nextElts.forEach((el) => el.removeAttribute(DATA_INITIAL_WIDTH));
+			const total = parentElt.clientWidth;
+			for (const element of [...previousElts, ...nextElts]) {
+				const width = element.getWidth();
+				if (width !== element.minWidth) element.setWidth((width * 100) / total, "%");
+			}
 			previousElts = [];
 			nextElts = [];
 		};
@@ -40,23 +59,23 @@
 	};
 
 	const moveHandler = (event: MouseEvent) => {
-		const resizeElements = (elements: HTMLElement[], movement: number) => {
-			for (const elt of elements) {
-				const initialWidth = parseFloat(elt.dataset.initialWidth ?? "");
-				const [minWidth, maxWidth] = [getWidth(elt, "min"), getWidth(elt, "max")];
-				const newClampedWidth = Math.max(minWidth, Math.min(maxWidth, initialWidth + movement));
-				elt.style.width = `${newClampedWidth}px`;
-				movement += initialWidth - newClampedWidth;
+		const resizeElements = (elements: ResizableElement[], movementX: number) => {
+			for (const { minWidth, maxWidth, initialWidth, setWidth } of elements) {
+				const newClampedWidth = Math.max(minWidth, Math.min(maxWidth, initialWidth + movementX));
+				setWidth(newClampedWidth, "px");
+				movementX += initialWidth - newClampedWidth;
 			}
-			return movement;
+			return movementX;
 		};
 
-		if (!initialClientX) return;
-		const movementX = event.clientX - initialClientX;
+		if (!initialClientX || !previousMaxMovementX || !nextMaxMovementX) return;
+		let movementX = event.clientX - initialClientX;
 		if (movementX < 0) {
+			movementX = Math.max(movementX, previousMaxMovementX);
 			const surplus = resizeElements(previousElts, movementX);
 			resizeElements(nextElts, -movementX + surplus);
 		} else if (movementX > 0) {
+			movementX = Math.min(movementX, nextMaxMovementX);
 			const surplus = resizeElements(nextElts, -movementX);
 			resizeElements(previousElts, movementX + surplus);
 		}
@@ -64,40 +83,29 @@
 </script>
 
 <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
-<hr class={COMPONENT_CLASS} on:mousedown={startDrag} />
+<hr class={THIS_COMPONENT_CLASS} on:mousedown={startDrag} />
 
 <style lang="scss">
 	hr {
 		z-index: 1;
 		border: none;
 		width: 0rem;
-		padding: 0 0.5px;
-		margin: 0 -0.5px;
+		padding: 0 1px;
+		margin: 0 -1px;
 		background-color: var(--border-subtle);
 		cursor: col-resize;
 		overflow: visible;
-
-		// &:hover {
-		// 	padding: 0 0.3125rem;
-		// 	margin: 0 -0.3125rem;
-		// 	background-color: var(--hightlight);
-		// }
+		transition: background-color 0.1s;
 
 		&:is(:hover, .active) {
-			padding: 0;
-			margin: 0;
-			outline: 0.5px solid var(--border-strong);
+			background-color: var(--border-strong);
 
 			&::before {
-				position: relative;
-				z-index: -1;
-				display: block;
 				content: "";
+				display: block;
 				height: 100%;
-				width: 1rem;
+				width: 2rem;
 				translate: -50%;
-				// background-color: lightblue;
-				// opacity: 0.5;
 			}
 		}
 	}
